@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./first.component.scss'],
 })
 export class FirstComponent implements OnInit {
-  family = [];
+  family: any[] = [];
   constructor(
     private _apiService: ApiService,
     private _dataSvc: DataServiceService,
@@ -28,7 +28,11 @@ export class FirstComponent implements OnInit {
   }
 
   click() {
-    this._dataSvc.setData(this.family);
-    this._router.navigate(['/second']);
+    this._apiService.data().subscribe((res) => {
+      this.family = res;
+      console.log(res);
+      this._dataSvc.setData = this.family;
+      this._router.navigate(['/second']);
+    });
   }
 }

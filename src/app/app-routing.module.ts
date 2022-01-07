@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'second',
     component: SecondComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'first',
+  },
 ];
 
 @NgModule({

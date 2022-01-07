@@ -5,14 +5,13 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DataServiceService {
-  dataPass = new Subject();
-  constructor() {}
+  _dataPass = [];
 
-  setData(val: any) {
-    this.dataPass.next(val);
+  get getData() {
+    return this._dataPass;
   }
 
-  getData() {
-    return this.dataPass.asObservable();
+  set setData(val: any) {
+    this._dataPass = val;
   }
 }

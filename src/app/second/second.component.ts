@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second.component.scss'],
 })
 export class SecondComponent implements OnInit {
+  getFirstData: any[] = [];
   constructor(private _datSvc: DataServiceService) {}
 
   ngOnInit(): void {
@@ -14,8 +15,6 @@ export class SecondComponent implements OnInit {
   }
 
   getData() {
-    this._datSvc.getData().subscribe((res) => {
-      console.log(res);
-    });
+    this.getFirstData = this._datSvc.getData;
   }
 }

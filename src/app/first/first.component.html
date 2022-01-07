@@ -3,8 +3,8 @@
 <button type="button" (click)="click()">按鈕</button>
 
 <h3>Family</h3>
-<ng-container *ngFor="let item of family">
-  <ul>
-    <li>{{ item | json }}</li>
-  </ul>
-</ng-container>
+<ul>
+  <ng-container *ngFor="let item of family">
+    <li>{{ item.name }}</li>
+  </ng-container>
+</ul>
