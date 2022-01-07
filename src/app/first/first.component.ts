@@ -1,5 +1,7 @@
+import { DataServiceService } from './../service/data-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first',
@@ -8,7 +10,11 @@ import { ApiService } from '../service/api.service';
 })
 export class FirstComponent implements OnInit {
   family = [];
-  constructor(private _apiService: ApiService) {}
+  constructor(
+    private _apiService: ApiService,
+    private _dataSvc: DataServiceService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -19,5 +25,10 @@ export class FirstComponent implements OnInit {
       this.family = res;
       console.log(res);
     });
+  }
+
+  click() {
+    this._dataSvc.setData(this.family);
+    this._router.navigate(['/second']);
   }
 }
